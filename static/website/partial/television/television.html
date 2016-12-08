@@ -1,0 +1,45 @@
+<div class="col-md-12" ng-controller="TelevisionCtrl">
+    <div class="module-container">
+        <div class="module-title">
+            Television Control
+        </div>
+        <div class="module-control module-control-wide" angular-ripple ng-click="playSoundClick(); onSwitchTelevisionOff()">
+            <i class="fa fa-power-off red-text"></i>Lights Off
+        </div>
+        <div class="module-control module-control-wide module-control-no-margin" angular-ripple ng-click="playSoundClick(); onInput()">
+            <i class="fa fa-keyboard-o"></i>Input
+        </div>
+        <div class="module-row-container">
+            <div class="module-row">
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onChannelUp()">
+                    <i class="fa fa-angle-up blue"></i>
+                    Channel Up
+                </div>
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+            </div>
+            <div class="module-row">
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onVolumeDown()">
+                    <i class="fa fa-volume-down blue"></i>
+                    Volume Down
+                </div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onMute()">
+                    <i class="fa fa-volume-off blue"></i>
+                    Mute
+                </div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onVolumeUp()">
+                    <i class="fa fa-volume-up blue"></i>
+                    Volume Up
+                </div>
+            </div>
+            <div class="module-row">
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onChannelDown()">
+                    <i class="fa fa-angle-down blue"></i>
+                    Channel Down
+                </div>
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+            </div>
+        </div>
+    </div>
+</div>

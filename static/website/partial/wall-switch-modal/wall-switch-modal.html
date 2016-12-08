@@ -1,0 +1,16 @@
+<div>
+	<div class="modal-header">
+	<button type="button" class="close" ng-if="!configuration.isWallSwitch" ng-click="playSoundClick(); onCancel()">
+		<i class="fa fa-close" aria-hidden="true"></i>
+	</button>
+		<h4 class="modal-title" id="myModalLabel">{{ configuration.title }}</h4>
+	</div>
+	<div class="modal-body" style="text-align: center; height:100%; font-size: 4vmin;" >
+		<p style="color: red; font-weight: bold;" ng-if="!configuration.noDeviceMatched">
+			{{ prefixLabel + configuration.deviceId }}
+		</p>
+		<p style="margin-top: 20px;">{{ statusLabel }}</p>
+	</div>
+	<div class="modal-footer">
+	</div>
+</div>

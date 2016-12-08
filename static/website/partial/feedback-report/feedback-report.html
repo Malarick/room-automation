@@ -1,0 +1,128 @@
+<div class="loading-overlay-container" ng-controller="FeedbackReportCtrl">
+	<loading-overlay active="showLoading"></loading-overlay>
+	<div class="module-container">
+		<uib-accordion close-others="false">
+			<div uib-accordion-group 
+				class="panel-default"
+				is-open="report.opened" >
+				<uib-accordion-heading>
+					<div ng-click="playSoundClick(); report.opened = !report.opened">
+						Feedback Report
+					</div>
+				</uib-accordion-heading>
+				<div class="col-md-6 jts-report-filter-form">
+					<div class="input-group">
+						<span class="input-group-addon">From</span>
+						<input type="text" class="form-control" 
+							uib-datepicker-popup="{{ dateFormat }}" ng-model="startDate.value" 
+							is-open="startDate.opened" 
+							ng-required="true" 
+							close-text="Close" 
+							ng-readonly="true" 
+							ng-click="playSoundClick(); startDate.opened = !startDate.opened" 
+							ng-change="getFeedbackReport()" />
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" 
+								ng-click="playSoundClick(); startDate.opened = !startDate.opened">
+								<i class="fa fa-calendar" aria-hidden="true"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+				
+				<div class="col-md-6 jts-report-filter-form">
+					<div class="input-group">
+						<span class="input-group-addon">To</span>
+						<input type="text" class="form-control" 
+							uib-datepicker-popup="{{ dateFormat }}" ng-model="endDate.value" 
+							is-open="endDate.opened" 
+							ng-required="true" 
+							close-text="Close" 
+							ng-readonly="true" 
+							ng-click="playSoundClick(); endDate.opened = !endDate.opened" 
+							ng-change="getFeedbackReport()" />
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" 
+								ng-click="playSoundClick(); endDate.opened = !endDate.opened">
+								<i class="fa fa-calendar" aria-hidden="true"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+
+				<div class="col-sm-6" ng-if="feedbackReportSeries.length > 0">
+					<p>{{ "Overall satisfaction: " + summary.positive_percentage + "%" }}</p>
+					<!-- <p>{{ "Positive feedback(s): " + summary.positive_count }}</p>
+					<p>{{ "Negative feedback(s): " + summary.negative_count }}</p> -->
+				</div>
+				<div class="col-sm-6" ng-if="feedbackReportSeries.length > 0">
+					<p>{{ "Likely to recommend: " + summary.recommended_percentage + "%" }}</p>
+					<!-- <p>{{ "Recommended: " + summary.recommended }}</p>
+					<p>{{ "Not recommended: " + summary.not_recommended }}</p> -->
+				</div>
+
+				<h4 ng-if="OverallSatisfactionSeries.length == 0">No data in this period</h4>
+				<div ng-if="OverallSatisfactionSeries.length > 0">
+					<div class="feedback-report-chart-container">
+						<h4>Overall Satisfaction</h4>
+						<canvas id="OverallSatisfaction" 
+							class="chart chart-pie" 
+							ng-if="OverallSatisfactionSeries.length > 0" 
+							chart-data="OverallSatisfactionData" 
+							chart-labels="OverallSatisfactionLabels"
+							chart-options="feedbackReportOptions">
+						</canvas>
+					</div>
+
+					<div class="feedback-report-chart-container">
+						<h4>Likely to Recommend</h4>
+						<canvas id="Recommendation" 
+							class="chart chart-pie" 
+							ng-if="OverallSatisfactionSeries.length > 0" 
+							chart-data="RecommendationData" 
+							chart-labels="RecommendationLabels"
+							chart-options="feedbackReportOptions">
+						</canvas>
+					</div>
+
+					<div class="feedback-report-chart-container">
+						<h4>Complaint vs Compliment</h4>
+						<canvas id="Compliment" 
+							class="chart chart-pie" 
+							ng-if="OverallSatisfactionSeries.length > 0" 
+							chart-data="ComplimentData" 
+							chart-labels="ComplimentLabels"
+							chart-options="feedbackReportOptions">
+						</canvas>
+					</div>
+
+					<div class="feedback-report-chart-container">
+						<h4>Overall Satisfaction Lv. 2</h4>
+						<canvas id="OverallSatisfaction2" 
+							class="chart chart-bar" 
+							ng-if="OverallSatisfactionSeries2.length > 0" 
+							chart-data="OverallSatisfactionData2" 
+							chart-labels="OverallSatisfactionLabels2"
+							chart-dataset-override="OverallSatisfactionDatasetOverride2"
+							chart-options="feedbackReportOptions" 
+							chart-colors="mixedChartColors">
+						</canvas>
+					</div>
+
+					<div class="feedback-report-chart-container">
+						<h4>Overall Satisfaction Lv. 3</h4>
+						<canvas id="OverallSatisfaction3" 
+							class="chart chart-bar" 
+							ng-if="OverallSatisfactionSeries3.length > 0" 
+							chart-data="OverallSatisfactionData3" 
+							chart-labels="OverallSatisfactionLabels3"
+							chart-dataset-override="OverallSatisfactionDatasetOverride3"
+							chart-options="feedbackReportOptions" 
+							chart-colors="mixedChartColors">
+						</canvas>
+					</div>
+				</div>
+			</div>
+		</uib-accordion>
+	</div>
+</div>

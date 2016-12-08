@@ -1,0 +1,118 @@
+.login-container {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: auto;
+  padding: 2em;
+  margin: 0 25%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  box-shadow: 5px 5px 5px #888;
+  -moz-box-shadow: 5px 5px 5px #888;
+  -webkit-box-shadow: 5px 5px 5px #888;
+  border: 2px solid whitesmoke;
+  cursor: pointer;
+  background:rgba(255,255,255,.5);
+  /*
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;*/
+  @media @phones {
+    width: 100%;
+    margin: 0;
+  }
+  @media @phones-landscape {
+    width: 100%;
+    margin: 0;
+  }
+  @media @tablets {
+    width: 80%;
+    margin: 0 10%;
+  }
+  @media @tablets-landscape {
+    width: 60%;
+    margin: 0 20%;
+  }
+}
+.login-container label {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: auto;
+  font-family: "Lato";
+}
+.login-container input[type="text"], .login-container input[type="password"] {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1em;
+  padding: 0.8em 0.8em 0.8em 3.3em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border:0;
+  color: #a9a9a9;
+  /*
+  float: left;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;*/
+}
+.login-input-container{
+    position: relative;
+    width:100%;
+    margin-bottom:1em;
+
+
+    span{
+        position:absolute;
+        display:block;
+        color:darken(#EDEDED, 10%);
+        left:.5em;
+        top:.18em;
+        font-size:1.8em;
+    }
+
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: #a9a9a9 !important;
+}
+
+.login-button {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: auto;
+  font-family: "Lato";
+  margin-top: 0.5em;
+  padding: 0.65em 0.5em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #0e5578;
+  text-align: center;
+  color:white;
+  font-size:1.1em;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  /*
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;*/
+}
+.login-button:hover {
+  background-color: #07374f;
+  /*
+  border: 1px solid lightgrey;*/
+}
+.login-information {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: auto;
+  margin: 0 0 1em 0;
+  font-style: italic;
+}

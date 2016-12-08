@@ -1,0 +1,21 @@
+{
+  "name": "comfort-web-interface",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Alvin Gunawan",
+  "license": "SMV",
+  "dependencies": {
+    "angular-spinner": "^0.8.1",
+    "body-parser": "^1.15.1",
+    "bunyan": "^1.8.1",
+    "bunyan-prettystream": "^0.1.3",
+    "connect-redis": "^3.0.2",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "kalmanjs": "^1.0.0-beta",
+    "redis": "^2.6.1",
+    "request": "^2.75.0",
+    "socket.io": "^1.4.5"
+  }
+}

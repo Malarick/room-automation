@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+    <title>Comfort</title>
+</head>
+<body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('flagStatusReport', function (address, state) {
+        console.log('flagStatusReport ' + address + ' ' + state);
+    });
+</script>
+</body>
+</html>

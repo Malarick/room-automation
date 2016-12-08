@@ -1,0 +1,14 @@
+<div>
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="playSoundClick(); $dismiss()"><span aria-hidden="true"><i class="fa fa-close"></i></span></button>
+		<h4 class="modal-title" id="myModalLabel">{{configuration.event.cancel ? "Cancel " : ""}}{{ configuration.title }}</h4>
+	</div>
+	<div class="modal-body">
+		{{ description }}
+	</div>
+	<div class="modal-footer">
+		<button type="button" ng-hide="success || clicked" class="btn btn-sm btn-warning" id="btn-cancel" ng-click="playSoundClick(); $dismiss()">Cancel</button>
+		<button type="button" ng-hide="clicked" class="btn btn-sm btn-primary" id="btn-send" ng-click="playSoundClick(); onSent()">Send</button>
+		<button type="button" ng-show="success" class="btn btn-sm btn-primary" id="btn-ok" ng-click="playSoundClick(); $close()">OK</button>
+	</div>
+</div>

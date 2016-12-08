@@ -1,0 +1,45 @@
+<div class="col-md-12" ng-controller="CurtainCtrl">
+    <div class="module-container">
+        <div class="module-title">
+            Curtain Control
+        </div>
+        <div class="module-row-container">
+            <div class="module-row-title">
+                Day Curtain
+            </div>
+            <div class="module-row">
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onDayCurtainOpen()">
+                    <img src="resources/images/curtainopen.png" />
+                    Open
+                </div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onDayCurtainStop()">
+                    <img src="resources/images/curtainstop.png" />
+                    Stop
+                </div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onDayCurtainClose()">
+                    <img src="resources/images/curtainclose.png" />
+                    Close
+                </div>
+            </div>
+        </div>
+        <div class="module-row-container">
+            <div class="module-row-title">
+                Night Curtain
+            </div>
+            <div class="module-row">
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onNightCurtainOpen()">
+                    <img src="resources/images/curtainopen.png" />
+                    Open
+                </div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onNightCurtainStop()">
+                    <img src="resources/images/curtainstop.png" />
+                    Stop
+                </div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onNightCurtainClose()">
+                    <img src="resources/images/curtainclose.png" />
+                    Close
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

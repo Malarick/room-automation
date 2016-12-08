@@ -1,0 +1,116 @@
+.event-box {
+  position: relative;
+  float: left;
+  width: 48%;
+  height: auto;
+  padding: 1.5em;
+  margin: 0 1% 1em 1%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  -webkit-box-shadow: @shadow;
+  border: 2px solid whitesmoke;
+  background:rgba(255,255,255,.5);
+  cursor: pointer;
+  /*
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;*/
+  @media @phones {
+    width: 100%;
+    margin: 0 0 1em 0;
+  }
+  @media @phones-landscape {
+    width: 48%;
+    margin: 0 1% 1em 1%;
+  }
+  @media @tablets {
+    width: 100%;
+    margin: 0 0 1em 0;
+  }
+  @media @tablets-landscape {
+    width: 48%;
+    margin: 0 1% 1em 1%;
+  }
+}
+.event-box:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+  -o-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+}
+.event-box img {
+  display: block;
+  width: auto;
+  height: 6em;
+  margin: 0 auto 0.5em auto;
+
+  @media @phones {
+    width: 30%;
+    height: auto;
+    /*margin: 0 20% 0.5em 20%;*/
+  }
+  @media @phones-landscape {
+    height: 5em;
+    /*margin: 0 auto 0.5em auto;*/
+  }
+  @media @tablets {
+    width: 25%;
+    height: auto;
+    /*margin: 0 35% 0.5em 35%;*/
+  }
+  @media @tablets-landscape {
+    width: auto;
+    height: 7em;
+    /*margin: 0 auto 0.5em auto;*/
+  }
+}
+.event-box-title {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: auto;
+  font-family: "Lato";
+  font-size: 1.65em;
+  font-weight: bold;
+  margin: 0.25em 0 0 0;
+  text-transform: uppercase;
+  text-align: center;
+  color:#07374f;
+
+  @media @tablets{
+      font-size:2.3em;
+  }
+  @media @tablets-landscape{
+      font-size:2.3em;
+  }
+}
+.event-box-description {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: auto;
+  font-family: "Lato";
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 1.5em;
+  color:#555252;
+  @media @phones {
+    font-size: 1.2em;
+  }
+  @media @phones-landscape {
+    display: none;
+    font-size: 1em;
+  }
+  @media @tablets {
+    font-size: 1.7em;
+  }
+  @media @tablets-landscape {
+    display: none;
+    font-size: 1em;
+  }
+}

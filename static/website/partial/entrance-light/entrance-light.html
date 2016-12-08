@@ -1,0 +1,28 @@
+<div class="col-md-12" ng-controller="EntranceLightCtrl">
+    <div class="module-container">
+        <div class="module-title">
+            Entrance Light Control
+        </div>
+        <div class="module-control module-control-wide" angular-ripple ng-click="playSoundClick(); switchLightOff()">
+            <i class="fa fa-power-off red-text"></i>Lights Off
+        </div>
+        <div class="entrance-light-slider-container">
+            <div class="entrance-light-slider-image">
+                <img src="resources/images/sun-on.png" />
+            </div>
+            <div class="entrance-light-slider">
+                <slider
+                    ng-model="brightness"
+                    step="sliderSetting.step"
+                    min="sliderSetting.min"
+                    max="sliderSetting.max"
+                    tooltip="{{ sliderSetting.tooltip }}"
+                    on-stop-slide="onSlideStop(brightness)">
+                </slider>
+            </div>
+            <div class="entrance-light-slider-image">
+                <img src="resources/images/sun-off.png" />
+            </div>
+        </div>
+    </div>
+</div>

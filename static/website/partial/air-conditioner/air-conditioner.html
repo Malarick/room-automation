@@ -1,0 +1,43 @@
+<div class="col-md-12" ng-controller="AirConditionerCtrl">
+    <div class="module-container">
+        <div class="module-title">
+            Air Conditioner Control
+        </div>
+        <div class="module-control module-control-wide" angular-ripple ng-click="playSoundClick(); deactivateAirConditioner()">
+            <i class="fa fa-power-off red-text"></i>AC Off
+        </div>
+        <div class="air-conditioner-control-container">
+            <div class="room-temperature-container">
+                <span>Room Temperature</span>
+                <span class="seven-segment-font" style="margin-left: 0.25em;">{{ roomTemperature }}</span>&deg;C
+            </div>
+            <div class="air-conditioner-left-partition">
+                <div class="air-conditioner-temperature-container">
+                    <div class="air-conditioner-temperature-control" ng-click="playSoundClick(); incrementTemperature()">
+                        <img src="resources/images/arrow-up.svg" />
+                        
+                    </div>
+                    <div class="air-conditioner-temperature-value" ng-show="airConditionerState != '00'">
+                        <span class="seven-segment-font">{{ airConditionerTemperature }}</span>&deg;C
+                    </div>
+                    <div class="air-conditioner-temperature-value" ng-show="airConditionerState == '00'">
+                        <span class="seven-segment-font">Off</span>
+                    </div>
+                    <div class="air-conditioner-temperature-control" ng-click="playSoundClick(); decrementTemperature()">
+                        <img src="resources/images/arrow-down.svg" />
+                    </div>
+                </div>
+            </div>
+            <div class="air-conditioner-right-partition">
+                <div class="fan-container">
+                    <img src="resources/images/fan-speed.png" class="fan-small" ng-click="playSoundClick(); onFanSpeedChange(1)" ng-show="fanSpeed != 1" />
+                    <img src="resources/images/fan-speed-active.png" class="fan-small" ng-click="playSoundClick(); onFanSpeedChange(1)" ng-show="fanSpeed == 1" />
+                    <img src="resources/images/fan-speed.png" class="fan-medium" ng-click="playSoundClick(); onFanSpeedChange(2)" ng-show="fanSpeed != 2" />
+                    <img src="resources/images/fan-speed-active.png" class="fan-medium" ng-click="playSoundClick(); onFanSpeedChange(2)" ng-show="fanSpeed == 2" />
+                    <img src="resources/images/fan-speed.png" class="fan-large" ng-click="playSoundClick(); onFanSpeedChange(3)" ng-show="fanSpeed != 3" />
+                    <img src="resources/images/fan-speed-active.png" class="fan-large" ng-click="playSoundClick(); onFanSpeedChange(3)" ng-show="fanSpeed == 3" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

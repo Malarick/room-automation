@@ -1,0 +1,59 @@
+<div>
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="playSoundClick(); onCancel()"><span aria-hidden="true"><i class="fa fa-close"></i></span></button>
+		<h4 class="modal-title" id="myModalLabel">{{ title + " (" + runner.issue_runner_name + ")" }}</h4>
+	</div>
+	<div class="modal-body">
+		<span ng-if="assignments.length < 1">Not assigned anywhere</span>
+		<uib-accordion close-others="oneAtATime">
+			<div uib-accordion-group class="panel-default"
+				ng-repeat="assignment in assignments"
+				is-open="isopen">
+				<uib-accordion-heading ng-click="isopen=!isopen">
+					<div>
+						{{ assignment.Location.label }}
+						<span ng-if="assignment.isCurrentTask">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+						<span class="badge group-monitor-modal-header-badge" 
+							ng-if="assignment.LocationOutstandingIssues.length > 0">
+							{{ assignment.LocationOutstandingIssues.length }}
+						</span>
+					</div>
+				</uib-accordion-heading>
+				<span ng-if="assignment.LocationOutstandingIssues.length < 1">
+					No outstanding task here
+				</span>
+				<div ng-repeat="outstandingIssue in assignment.LocationOutstandingIssues">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" class="group-monitor-modal-checkbox"
+								ng-model="outstandingIssue.isSelected" />
+								{{outstandingIssue.issue_title}}
+							<span ng-if="outstandingIssue.Runner != null"> 
+								(
+									<i class="fa fa-user" aria-hidden="true"></i>
+									{{ outstandingIssue.Runner.issue_runner_name }}
+								)
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+		</uib-accordion>
+	</div>
+	<div class="modal-footer">		
+		<div ng-if="assignments.length > 0">
+			<div class="group-monitor-modal-control-btn">
+				<button class="btn btn-warning" ng-click="playSoundClick(); onCancel()">
+					Cancel
+				</button>
+			</div>
+			<div class="group-monitor-modal-control-btn">
+				<button class="btn btn-primary" ng-click="playSoundClick(); onSaveTaskAssignment(assignments)">
+					Save
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,136 @@
+.entrance-light-slider-container {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: auto;
+  margin-top: 1em;
+};
+.entrance-light-slider-image {
+  position: relative;
+  float: left;
+  width: 10%;
+  height: auto;
+  padding: 0 2em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  @media @phones {
+    padding: 0 0.5em;
+    margin-left:.3em;
+  }
+  @media @phones-landscape {
+    padding: 0 1em;
+  }
+  @media @tablets {
+    padding: 0 1em;
+    margin-left:1em;
+  }
+  @media @tablets-landscape {
+    padding: 0 1.5em;
+  }
+}
+.entrance-light-slider-image img {
+  width: 100%;
+  height: auto;
+}
+.entrance-light-slider {
+  position: relative;
+  float: left;
+  width: 77%;
+  height: auto;
+  padding: 2em 0;
+  margin-left: .6em;
+  margin-right: .9em;
+  @media @phones {
+    padding: 0;
+    width: 69%;
+  }
+  @media @phones-landscape {
+    padding: 0;
+    margin-top:.3em;
+    width: 75%;
+  }
+  @media @tablets {
+    padding: 0.75em 0;
+    width: 72%;
+  }
+  @media @tablets-landscape {
+    padding: 1.25em 0;
+    width: 72%;
+  }
+}
+
+/* Angular Bootstrap Slider Custom */
+.slider-handle
+{
+    background-image:none !important;
+    box-shadow:none !important;
+    height:50px !important;
+    width:50px !important;
+    margin-top:-25px !important;
+    background-color:#fff;
+    box-shadow:none!important;
+    background-image:none !important;
+
+    @media @phones {
+        height:30px !important;
+        width:30px !important;
+        margin-top:-14px !important;
+    }
+    @media @phones-landscape {
+        height:30px !important;
+        width:30px !important;
+        margin-top:-15px !important;
+    }
+    @media @tablets {
+        height:3em !important;
+        width:3em !important;
+        margin-top:-1.2em !important;
+    }
+    @media @tablets-landscape {
+        height:3em !important;
+        width:3em !important;
+        margin-top:-1.2em !important;
+    }
+  /**background-image: none !important;
+  background: rgb(68,187,235) !important; /* Old browsers 
+  background: -moz-radial-gradient(ellipse at center, rgba(68,187,235,1) 0%, rgba(7,98,140,1) 100%) !important; /* FF3.6-15 
+  background: -webkit-radial-gradient(ellipse at center, rgba(68,187,235,1) 0%,rgba(7,98,140,1) 100%) !important; /* Chrome10-25,Safari5.1-6
+  background: radial-gradient(ellipse at center, rgba(68,187,235,1) 0%,rgba(7,98,140,1) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#44bbeb', endColorstr='#07628c',GradientType=1 ) !important; /* IE6-9 fallback on horizontal gradient */
+}
+.slider-selection
+{
+  background-color: #F16F22;
+  background-image: none !important;
+}
+.slider .tooltip.top
+{
+  margin-top: -74px !important;
+}
+.slider-track{
+    margin-top:0 !important;
+    border-radius:0;
+    height:5px!important;
+    background-color:#fff;
+    box-shadow:none!important;
+    background-image:none !important;
+    border-radius:0 !important;
+
+    @media @phones {
+        padding: 0;
+        height:2px !important;
+    }
+    @media @phones-landscape {
+        padding: 0;
+        margin-top:.2em;
+        height:2px !important;
+    }
+    @media @tablets {
+        height:5px !important;
+    }
+    @media @tablets-landscape {
+        height:5px !important;
+    }
+}

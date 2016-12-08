@@ -1,0 +1,42 @@
+<div class="col-md-12" ng-controller="LightCtrl">
+    <div class="module-container">
+        <div class="module-title">
+            Lights Control
+        </div>
+        <div class="module-control module-control-wide" angular-ripple ng-click="playSoundClick(); switchAllLightsOff()">
+            <i class="fa fa-power-off red-text"></i>Lights Off
+        </div>
+        <div class="module-control" ng-click="playSoundClick();">
+            <div class="module-control-label">Light 1</div>
+            <toggle-switch
+                ng-model="light_01"
+                ng-change="toggleLightCommand('01')"
+                class="switch-large">
+            </toggle-switch>
+        </div>
+        <div class="module-control" ng-click="playSoundClick();">
+            <div class="module-control-label">Light 2</div>
+            <toggle-switch
+                ng-model="light_02"
+                ng-change="toggleLightCommand('02')"
+                class="switch-large">
+            </toggle-switch>
+        </div>
+        <div class="module-control" ng-click="playSoundClick();">
+            <div class="module-control-label">Light 3</div>
+            <toggle-switch
+                ng-model="light_03"
+                ng-change="toggleLightCommand('03')"
+                class="switch-large">
+            </toggle-switch>
+        </div>
+        <div class="module-control" ng-click="playSoundClick();">
+            <div class="module-control-label">Light 4</div>
+            <toggle-switch
+                ng-model="light_04"
+                ng-change="toggleLightCommand('04')"
+                class="switch-large">
+            </toggle-switch>
+        </div>
+    </div>
+</div>

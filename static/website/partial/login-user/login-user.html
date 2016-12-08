@@ -1,0 +1,21 @@
+<div class="loading-overlay-container" ng-controller="LoginUserCtrl">
+	<loading-overlay active="showLoading"></loading-overlay>
+	<div class="module-container">
+		<div class="module-title center-text">
+			User Login
+		</div>
+		<div class="login-container">
+			<div class="login-input-container">
+				<input type="text" name="username" id="username" placeholder="Username" ng-model="username" ng-autofocus="true" ng-keypress="onEnter($event)" />
+				<span><i class="fa fa-user" aria-hidden="true"></i></span>
+			</div>
+
+			<div class="login-input-container">
+                <input type="password" name="password" id="password" placeholder="Password" ng-model="password" ng-keypress="onEnter($event)" />
+                <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+            </div>
+			<span class="login-information red-text" ng-show="showInvalid">{{ invalidMessage }}</span>
+			<div class="login-button" ng-click="playSoundClick(); onLogin()" angular-ripple>Login</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<div class="loading-overlay-container" ng-controller="EmployeeDashboardCtrl">
+	<loading-overlay active="showLoading"></loading-overlay>
+	<div class="module-container">
+		<div class="module-title center-text">
+			{{ moduleTitle }}
+		</div>
+		<ui-select ng-model="runnerGroup" theme="select2" style="width: 100%;" title="Choose a runner group" ng-change="populateDashboard(runnerGroup)">
+			<ui-select-match placeholder="Select a runner group in the list or search its name...">{{$select.selected.name}}</ui-select-match>
+			<ui-select-choices repeat="runnerGroup in runnerGroups | angularSelectPropsFilter: {name: $select.search}">
+				<div ng-bind-html="runnerGroup.name | highlight: $select.search"></div>
+				<small>
+					Runner Group ID: {{runnerGroup.runner_group_id}}
+				</small>
+			</ui-select-choices>
+		</ui-select>
+
+		<div class="dashboard-container">
+			<div ng-if="runners.length < 1">No employee assigned here.</div>
+			<div class="runner-box" ng-repeat="runner in runners">
+				<div class="runner-box-title" ng-bind-html="runner.issue_runner_name"></div>
+				<div class="runner-box-subtitle">Status: <span ng-bind-html="runner.available ? 'Available' : 'On Break'"></div>
+				<small class="runner-box-description">
+					Assignments: <span ng-if="runner.assignments.length < 1">Not assigned anywhere</span>
+					<span ng-repeat="assignment in runner.assignments">{{ assignment.location_alias }}
+						<span ng-show="!$last">, </span>
+					</span>
+				</small>
+			</div>
+		</div>
+	</div>
+</div>

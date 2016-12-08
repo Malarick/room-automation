@@ -1,0 +1,72 @@
+<div class="loading-overlay-container" ng-controller="JtsReportCtrl">
+	<loading-overlay active="showLoading"></loading-overlay>
+	<div class="module-container">		
+		<uib-accordion close-others="true">
+			<uib-accordion-group is-open="report1.opened" ng-click="playSoundClick(); openReport1()">
+				<uib-accordion-heading>Outstanding Issue Report</uib-accordion-heading>
+				<h4 ng-if="outstandingIssueReportSeries.length == 0">No data</h4>
+				<canvas id="OutstandingIssueReport" class="chart chart-pie" ng-if="outstandingIssueReportSeries.length > 0" chart-data="outstandingIssueReportData" chart-labels="outstandingIssueReportLabels" chart-options="outstandingIssueReportOptions" chart-legend="true"></canvas>
+			</uib-accordion-group>
+
+			<uib-accordion-group is-open="report2.opened" ng-click="playSoundClick(); openReport2()">
+				<uib-accordion-heading>Trend Issue Report</uib-accordion-heading>
+				<div class="col-md-4 jts-report-filter-form">
+					<div class="input-group">
+						<span class="input-group-addon">From</span>
+						<input type="text" class="form-control" uib-datepicker-popup="{{ dateFormat }}" ng-model="startDate1.value" is-open="startDate1.opened" ng-required="true" close-text="Close" ng-readonly="true" ng-click="playSoundClick(); openStartDate1()" ng-change="getTrendIssueReport()" />
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="playSoundClick(); openStartDate1()"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+						</span>
+					</div>
+				</div>
+				
+				<div class="col-md-4 jts-report-filter-form">
+					<div class="input-group">
+						<span class="input-group-addon">To</span>
+						<input type="text" class="form-control" uib-datepicker-popup="{{ dateFormat }}" ng-model="endDate1.value" is-open="endDate1.opened" ng-required="true" close-text="Close" ng-readonly="true" ng-click="playSoundClick(); openEndDate1()" ng-change="getTrendIssueReport()" />
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="playSoundClick(); openEndDate1()"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+						</span>
+					</div>
+				</div>
+
+				<div class="col-md-4 jts-report-filter-form">
+					<div class="input-group">
+						<span class="input-group-addon">Period Type</span>
+						<select class="form-control" ng-model="periodType.selection" ng-options="periodType as periodType.label for periodType in periodTypes" ng-change="getTrendIssueReport()">
+						</select>
+					</div>
+				</div>
+
+				<h4 ng-if="trendIssueReportSeries.length == 0">No data in this period</h4>
+				<canvas id="TrendIssueReport" class="chart chart-line" ng-if="trendIssueReportSeries.length > 0" chart-data="trendIssueReportData" chart-labels="trendIssueReportLabels" chart-series="trendIssueReportSeries" chart-options="trendIssueReportOptions" chart-legend="true"></canvas>
+			</uib-accordion-group>
+
+			<uib-accordion-group is-open="report3.opened" ng-click="playSoundClick(); openReport3()">
+				<uib-accordion-heading>Employee Productivity Issue Summary</uib-accordion-heading>
+				<div class="col-md-6 jts-report-filter-form">
+					<div class="input-group">
+						<span class="input-group-addon">From</span>
+						<input type="text" class="form-control" uib-datepicker-popup="{{ dateFormat }}" ng-model="startDate2.value" is-open="startDate2.opened" ng-required="true" close-text="Close" ng-readonly="true" ng-click="playSoundClick(); openStartDate2()" ng-change="getEmployeeProductivityIssueSummary()" />
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="playSoundClick(); openStartDate2()"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+						</span>
+					</div>
+				</div>
+
+				<div class="col-md-6 jts-report-filter-form">
+					<div class="input-group">
+						<span class="input-group-addon">To</span>
+						<input type="text" class="form-control" uib-datepicker-popup="{{ dateFormat }}" ng-model="endDate2.value" is-open="endDate2.opened" ng-required="true" close-text="Close" ng-readonly="true" ng-click="playSoundClick(); openEndDate2()" ng-change="getEmployeeProductivityIssueSummary()" />
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="playSoundClick(); openEndDate2()"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+						</span>
+					</div>
+				</div>
+
+				<h4 ng-if="employeeProductivyIssueSummarySeries.length == 0">No data in this period</h4>
+				<canvas id="EmployeeProductivityIssueSummary" class="chart chart-bar" ng-if="employeeProductivyIssueSummarySeries.length > 0" chart-data="employeeProductivyIssueSummaryData" chart-labels="employeeProductivyIssueSummaryLabels" chart-series="employeeProductivyIssueSummarySeries" chart-options="employeeProductivyIssueSummaryOptions" chart-legend="true"></canvas>
+			</uib-accordion-group>
+		</uib-accordion>
+	</div>
+</div>

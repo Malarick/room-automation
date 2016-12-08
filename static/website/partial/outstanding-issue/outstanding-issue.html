@@ -1,0 +1,126 @@
+<div class="loading-overlay-container" ng-controller="OutstandingIssueCtrl">
+	<loading-overlay active="showLoading"></loading-overlay>
+	<div class="module-container">
+		<div class="module-title">
+			{{ moduleTitle }}
+		</div>
+		<div class="module-header-container">
+            <div class="display-function">
+                <input type="checkbox" ng-model="showAll" id="outstanding" ng-change="populateList(showAll)" ng-click="playSoundClick();" />
+                <label for="outstanding">Show All Outstanding Task</label><!--Show all outstanding task-->
+
+                <input type="checkbox" id="show-chart" class="vis-hidden" ng-model="showChart" ng-click="playSoundClick();" /><!--show charts-->
+                <label for="show-chart">Show Chart</label>
+                
+                <!--<label><input type="checkbox" ng-model="showTable" />Show table</label>Show tables-->
+            </div>
+			<div class="performance-box">
+				<span class="performance-label performance-label-primary">Assigned 
+					<span class="badge">{{ summary.assigned }}</span>
+				</span>
+				<span class="performance-label performance-label-warning">Open 
+					<span class="badge">{{ summary.open }}</span>
+				</span>
+				<span class="performance-label performance-label-info">In Progress 
+					<span class="badge">{{ summary.in_progress }}</span>
+				</span>
+				<span class="performance-label performance-label-success">Closed 
+					<span class="badge">{{ summary.closed }}</span>
+				</span>
+				<span class="performance-label performance-label-danger">Avg. Performance 
+					<span class="badge">{{ summary.average_respond_time | roundNumber }} min/task</span>
+				</span>
+			</div>
+			<div class="input-group filter-room">
+                <input type="text" class="form-control" ng-model="search.Location.label" placeholder="Filter by room no." />
+            	<span class="input-group-addon filter-room-span-right">
+		            <i ng-class="scannerActive 
+		            	? 'fa fa-map-marker filter-room-beacon-active' 
+		            	: 'fa fa-map-marker filter-room-beacon-idle'" 
+		            	aria-hidden="true" >	
+		        	</i> 
+	        	</span>
+            </div>  
+            <div class="filter-room-btn">
+            	<button class="btn btn-primary filter-room-beacon-btn" 
+            		ng-click="playSoundClick(); detectBeaconLocation()">
+            		<span>
+			        	<i ng-class="scannerActive 
+			        	? 'fa fa-spinner fa-pulse'
+			        	: 'fa fa-map-marker'" 
+			            	aria-hidden="true" >	
+			        	</i> 
+            			{{ scannerActive ? "Scanning location..." : "Scan location" }}
+		        	</span>
+            	</button>
+            </div> 
+		</div>
+		<hr/>		
+        <div class="chart-wrapper">
+            <div class="chart-canvas" ng-show="showChart">
+                <canvas id="bar" class="chart chart-pie" chart-data="chartData" chart-labels="chartLabels" chart-series="chartSeries" chart-options="chartOptions" chart-legend="true"></canvas>
+            </div>
+        </div>
+		
+		<div ng-if="outstandingIssues.length < 1">
+			<h4>No outstanding issue found.</h4>
+		</div>
+		<div class="issue-box-container">
+			<div class="issue-box" ng-if="outstandingIssues.length > 0" angular-ripple ng-repeat="outstandingIssue in outstandingIssues | filter: search | orderBy: 'Location.label'">
+				<div class="issue-box-title">{{ outstandingIssue.Location.label || "UNSPECIFIED" }}</div>			
+				<div class="issue-box-subtitle">{{ outstandingIssue.status }}</div>
+				<div class="issue-box-description">
+					<ul>
+						<li>{{ outstandingIssue.reported_date + " " + outstandingIssue.reported_time }}</li>
+						<li>{{ outstandingIssue.issue_title }}</li>
+						<li>{{ outstandingIssue.issue_runner || "UNSPECIFIED" }}</li>
+					</ul>
+					<div class="issue-box-btn-container" ng-if="!showAll || (showAll && outstandingIssue.username == userName && outstandingIssue.username != null)">
+						<button class="btn btn-warning" ng-click="playSoundClick(); onUpdate(outstandingIssue.issue_id, 'IN PROGRESS', outstandingIssue.status)">
+							<!--<i class="fa fa-hourglass-half" aria-hidden="true"></i>--> In-Progress
+						</button>
+						<button class="btn btn-success" ng-click="playSoundClick(); onUpdate(outstandingIssue.issue_id, 'CLOSED', outstandingIssue.status)">
+							<!--<i class="fa fa-check-square-o" aria-hidden="true"></i>--> Close
+						</button>
+					</div>
+					<div class="issue-box-btn-container">
+						<button class="btn btn-primary btn-assign"
+							ng-if="showAssign"
+							ng-click="playSoundClick(); onAssignTask(outstandingIssue);">
+							<!--<i class="fa fa-check-square-o" aria-hidden="true"></i>--> Assign Task
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="table-responsive table-condensed">
+            <table class="table table-bordered table-striped table-hover" ng-show="showTable">
+                <thead>
+                    <tr class="warning">
+                        <th>No.</th>
+                        <th>Room No.</th>
+                        <th>Description</th>
+                        <th>Runner</th>
+                        <th colspan="2">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="outstandingIssues.length < 1">
+                        <td colspan="11">No outstanding issue found.</td>
+                    </tr>
+                    <tr ng-if="outstandingIssues.length > 0" class="info" ng-repeat="outstandingIssue in outstandingIssues | filter: search | orderBy: 'reporter_name'">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ outstandingIssue.Location.label || "UNSPECIFIED" }}</td>
+                        <td>{{ outstandingIssue.issue_description }}</td>
+                        <td>{{ outstandingIssue.issue_runner }}</td>
+                        <td>{{ outstandingIssue.status }}</td>
+                        <td>
+                            <button class="btn btn-primary" ng-disabled="outstandingIssue.username != userName || outstandingIssue.username == null" ng-click="playSoundClick(); openModal(outstandingIssue.issue_id)">Update status</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+		
+	</div>
+</div>

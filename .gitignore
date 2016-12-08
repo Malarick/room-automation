@@ -1,0 +1,7 @@
+.idea
+node_modules
+*.log
+*.log.*
+static/web/bower_components/
+static/website/bower_components/
+static/dist/bower_components/

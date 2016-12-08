@@ -1,0 +1,60 @@
+<div class="col-md-12" ng-controller="FeedbackCtrl" style="margin-top: 4vh;">
+    <div ng-if="issues.length < 1">
+        <h4>No feedback request found.</h4>
+    </div>
+    <div class="issue-box-container">
+        <div class="issue-box" ng-if="issues.length > 0" angular-ripple ng-repeat="issue in issues | filter: search | orderBy: 'reporter_name'">
+            <div ng-show="!issue.form">
+                <div class="issue-box-title">{{ issue.issue_title }}</div>
+                <div class="issue-box-subtitle">REQUESTING FEEDBACK</div>
+                <div class="issue-box-description">
+                    <ul>
+                        <li>{{ issue.reported_date + " " + issue.reported_time }}</li>
+                        <li>{{ issue.issue_runner || "UNSPECIFIED" }}</li>
+                    </ul>
+                    <div ng-if="!showAll || (showAll && issue.username == userName && issue.username != null)">
+                        <button class="btn btn-warning" ng-click="playSoundClick(); onFeedback(issue.issue_id, 0, '')">
+                            <!--<i class="fa fa-hourglass-half" aria-hidden="true"></i>-->
+                            No Feedback
+                        </button>
+                        <button class="btn btn-success" ng-click="playSoundClick(); issue.form=true">
+                            <!--<i class="fa fa-check-square-o" aria-hidden="true"></i>-->
+                            Give Feedback
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="issue.form">
+                <div class="col-md-12" style="text-align: center">
+                    <div class="col-md-4">
+                        <div style="background: #5cb85c;" ng-click="playSoundClick(); onFeedback(issue.issue_id, 3, issue.feedback)">
+                            <img class="rating-image" src="resources/images/happy.png">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="background: #5bc0de;" ng-click="playSoundClick(); onFeedback(issue.issue_id, 3, issue.feedback)">
+                            <img class="rating-image" src="resources/images/neutral.png">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="background: #c9302c;" ng-click="playSoundClick(); onFeedback(issue.issue_id, 3, issue.feedback)">
+                            <img class="rating-image" src="resources/images/upset.png">
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1vh">
+                        <div class="col-md-10" style="padding-left:0">
+                            <input type="text" class="form-control" placeholder="Comment" ng-model="issue.feedback"/>
+                        </div>
+
+                        <div class="col-md-2" style="padding:0">
+                            <button class="btn btn-warning" style="width: 100%" ng-click="playSoundClick(); issue.form=false">
+                                <!--<i class="fa fa-hourglass-half" aria-hidden="true"></i>-->
+                                Back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

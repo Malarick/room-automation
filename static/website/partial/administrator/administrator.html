@@ -1,0 +1,10 @@
+<div class="loading-overlay-container" ng-controller="AdministratorCtrl" ui-view>
+	<loading-overlay active="showLoading"></loading-overlay>
+	<div class="module-container">
+		<div ng-repeat="menu in menus" class="menu-box" angular-ripple ng-click="playSoundClick(); onMenuClicked(menu)">
+			<span ng-show="outstandingTask > 0 && menu.label == jtsMenuLabel" class="badge menu-notification-badge">{{ outstandingTask }}</span>
+			<img ng-src="{{ SERVER_HOST + menu.picture_url }}" />
+			<div style="text-align: center;">{{menu.label}}</div>
+		</div>
+	</div>
+</div>

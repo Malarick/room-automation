@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="CWI">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="theme-color" content="#07374F">
+        <meta name="msapplication-navbutton-color" content="#07374F">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#07374F">
+        <title>Room Control System</title>
+        <link href="resources/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+        <link href="app.less" type="text/css" rel="stylesheet/less">
+        <!-- CSS -->
+        <link href="bower_components/angular-growl-v2/build/angular-growl.min.css" type="text/css" rel="stylesheet">
+        <link href="bower_components/angular-bootstrap-toggle-switch/style/bootstrap3/angular-toggle-switch-bootstrap-3.css" type="text/css" rel="stylesheet">
+        <link href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css" type="text/css" rel="stylesheet">
+        <link href="bower_components/angular-chart.js/dist/angular-chart.min.css" rel="stylesheet" />
+        <link href="bower_components/angular-ui-select/dist/select.css" rel="stylesheet" />
+        <link href="bower_components/select2/select2.css" rel="stylesheet" />
+    </head>
+    <body ng-controller="MainCtrl" 
+        ng-class="{ 'no-background': !showBackground }"
+        ng-mousemove="resetInnactivityTimer()"
+        ng-click="resetInnactivityTimer()"
+        ng-mobile-click="resetInnactivityTimer()">
+        <!-- Livereload script for development only (stripped during dist build) -->
+        <!--
+        <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
+        -->
+        <!--
+            IE8 support, see AngularJS Internet Explorer Compatibility http://docs.angularjs.org/guide/ie
+            For Firefox 3.6, you will also need to include jQuery and ECMAScript 5 shim
+        -->
+        <!--[if lt IE 9]>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.2.0/es5-shim.js"></script>
+            <script>
+            document.createElement('ui-select');
+            document.createElement('ui-select-match');
+            document.createElement('ui-select-choices');
+            </script>
+        <![endif]-->
+
+        <!-- JS from Bower Components -->
+        <script src="bower_components/less.js/dist/less.js" data-concat="false"></script>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/lodash/dist/lodash.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/socket.io-client/socket.io.js"></script>
+        <script src="bower_components/angular-socket-io/socket.min.js"></script>
+        <script src="bower_components/angular-growl-v2/build/angular-growl.min.js"></script>
+        <script src="bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.min.js"></script>
+        <script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+        <script src="bower_components/angular-bootstrap-slider/slider.js"></script>
+        <script src="bower_components/angular-ripple/angular-ripple.js"></script>
+        <script src="bower_components/Chart.js/dist/Chart.min.js"></script>
+        <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+        <script src="bower_components/angular-ui-select/dist/select.js"></script>
+		<script src="bower_components/signalr/jquery.signalR.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- Add New Bower Component JS Above -->
+
+        <!-- Main App JS -->
+        <script src="app.js"></script>
+        <script src="directive/background-image/background-image.js"></script>
+        <script src="directive/ng-autofocus/ng-autofocus.js"></script>
+        <script src="directive/loading-overlay/loading-overlay.js"></script>
+        <script src="service/main-service.js"></script>
+        <script src="service/authentication-service.js"></script>
+        <script src="service/socket-service.js"></script>
+        <script src="controller/main/main.js"></script>
+        <script src="partial/login/login.js"></script>
+        <script src="partial/home/home.js"></script>
+        <script src="partial/light/light.js"></script>
+        <script src="partial/entrance-light/entrance-light.js"></script>
+        <script src="partial/air-conditioner/air-conditioner.js"></script>
+        <script src="partial/fan/fan.js"></script>
+        <script src="partial/television/television.js"></script>
+        <script src="partial/curtain/curtain.js"></script>
+        <script src="partial/projector/projector.js"></script>
+        <script src="partial/in-room-service/in-room-service.js"></script>
+        <script src="partial/jts-report/jts-report.js"></script>
+        <script src="partial/external-url/external-url.js"></script>
+        <script src="partial/event/event.js"></script>
+        <script src="partial/event-modal/event-modal.js"></script>
+        <script src="partial/administrator/administrator.js"></script>
+        <script src="partial/outstanding-issue/outstanding-issue.js"></script>
+        <script src="partial/outstanding-issue-modal/outstanding-issue-modal.js"></script>
+        <script src="partial/guest-menu/guest-menu.js"></script>
+        <script src="filter/round-down-number.js"></script>
+        <script src="filter/round-number.js"></script>
+        <script src="filter/round-up-number.js"></script>
+        <script src="partial/login-user/login-user.js"></script>
+        <script src="partial/wall-switch/wall-switch.js"></script>
+        <script src="partial/wall-switch-modal/wall-switch-modal.js"></script>
+        <script src="partial/location-password/location-password.js"></script>
+        <script src="partial/feedback/feedback.js"></script>
+        <script src="partial/employee-dashboard/employee-dashboard.js"></script>
+        <script src="filter/angular-select-props-filter.js"></script>
+        <script src="partial/group-monitor/group-monitor.js"></script>
+        <script src="partial/request-feedback-modal/request-feedback-modal.js"></script>
+        <script src="partial/wall-switch-by-device/wall-switch-by-device.js"></script>
+        <script src="partial/group-monitor-assignment-modal/group-monitor-assignment-modal.js"></script>
+        <script src="service/location-service.js"></script>
+        <script src="service/jts-service.js"></script>
+        <script src="partial/feedback-report/feedback-report.js"></script>
+        <script src="directive/ng-mobile-click/ng-mobile-click.js"></script>
+        <!-- Add New Component JS Above -->
+
+        <div growl></div>
+        <div class="header center-vertical">
+            <div class="header-button home-button" ng-click="soundClickCallback(); navigate('home')">
+            </div>
+            <div class="header-button no-connection-button" ng-if="!connectionState">
+            </div>
+            <div class="header-button admin-button" ng-if="((!authenticationState) || (authenticationState && authenticationPrivilege)) && (!isWallSwitch && !isWallSwitchByDevice)" ng-click="soundClickCallback(); navigate('login')">
+                <span class="badge header-notification-badge" 
+                    ng-if="authenticationState && outstandingTask > 0">
+                    {{ outstandingTask }}
+                </span>
+            </div>
+            <div class="header-button logout-button" ng-if="authenticationState" ng-click="soundClickCallback(); onLogout()">
+            </div>
+            <div class="header-button req-password-button" ng-if="(isWallSwitch || isWallSwitchByDevice) && isPatientExist" ng-click="soundClickCallback(); onReqPassword('location-password', locationIdJts, locationIdEmos)">
+            </div>
+            <div class="header-button vacant-button" ng-if="(isWallSwitch || isWallSwitchByDevice) && !isPatientExist">
+            </div>
+            <div class="header-text" ng-if="isWallSwitch || isWallSwitchByDevice">
+                <p><b>{{ locationLabel }} </b></p>
+            </div>
+        </div>
+        <div class="content" ng-class="{ 'content-expand' : !showFooter }">
+            <div class="ng-view-style" ui-view>
+            </div>
+        </div>
+        <div>
+            <div class="footer" ng-class="{ 'footer-hide' : !showFooter }">
+                <div class="footer-toggle center-vertical" ng-class="{ 'footer-toggle-active' : !showFooter }" ng-click="soundClickCallback(); onToggleFooter()"></div>
+                <div class="footer-menu" angular-ripple ng-click="soundClickCallback(); navigate('light')">
+                    <img src="resources/images/light.png" class="footer-img">
+                </div>
+                <div class="footer-menu" angular-ripple ng-click="soundClickCallback(); navigate('entrance-light')">
+                    <img src="resources/images/light-entrance.png" class="footer-img">
+                </div>
+                <div class="footer-menu" angular-ripple ng-click="soundClickCallback(); navigate('air-conditioner')">
+                    <img src="resources/images/aircon.png" class="footer-img">
+                </div>
+                <div class="footer-menu" angular-ripple ng-click="soundClickCallback(); navigate('fan')">
+                    <img src="resources/images/fan.png" class="footer-img">
+                </div>
+                <div class="footer-menu" angular-ripple ng-click="soundClickCallback(); navigate('television')">
+                    <img src="resources/images/tv.png" class="footer-img">
+                </div>
+                <div class="footer-menu" angular-ripple ng-click="soundClickCallback(); navigate('curtain')">
+                    <img src="resources/images/curtain.png" class="footer-img">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

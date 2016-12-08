@@ -1,0 +1,8 @@
+<div class="loading-overlay-container" ng-controller="GuestMenuCtrl" ui-view>
+	<loading-overlay active="showLoading"></loading-overlay>
+	<div class="module-container">
+		<div ng-repeat="menu in menus" class="menu-box" angular-ripple ng-click="playSoundClick(); onMenuClicked(menu)">
+			<img ng-src="{{ serverHost + menu.picture_url }}" />
+		</div>
+	</div>
+</div>

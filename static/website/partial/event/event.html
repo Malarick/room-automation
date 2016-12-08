@@ -1,0 +1,16 @@
+<style>
+	.cancel {
+		background: #ccffeb;
+	}
+</style>
+
+<div class="loading-overlay-container" ng-controller="EventCtrl">
+    <loading-overlay active="showLoading"></loading-overlay>
+    <div class="module-container">
+        <div class="event-box" angular-ripple ng-click="playSoundClick(); onEventClicked(event)" ng-repeat="event in events" ng-class="{ cancel: event.cancel }">
+            <img ng-src="{{ serverHost + event.picture_url }}" />
+            <div class="event-box-title">{{event.cancel ? "Cancel " : ""}}{{ event.label }}</div>
+            <div class="event-box-description">{{ event.event_description }}</div>
+        </div>
+    </div>
+</div>

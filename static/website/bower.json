@@ -1,0 +1,37 @@
+{
+  "name": "cwi",
+  "version": "0.0.0",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~2.2",
+    "lodash": "~4.9",
+    "bootstrap": "~3.3",
+    "angular": "~1.5",
+    "angular-ui-router": "~0.2",
+    "angular-animate": "~1.5",
+    "angular-resource": "~1.5",
+    "angular-cookies": "^1.5.8",
+    "angular-mocks": "~1.5",
+    "angular-bootstrap": "~1.3.1",
+    "moment": "~2.12",
+    "less.js": "~2.6",
+    "font-awesome": "~4.5",
+    "angular-socket-io": "^0.7.0",
+    "angular-growl-v2": "^0.7.9",
+    "angular-bootstrap-toggle-switch": "^0.5.6",
+    "angular-bootstrap-slider": "^0.1.28",
+    "socket.io-client": "^1.4.6",
+    "angular-ripple": "*",
+    "angular-chart.js": "^1.0.3",
+    "angular-ui-select": "^0.19.1",
+    "angular-sanitize": "1.5.6",
+    "select2": "~3.4.5",
+    "signalr": "^2.2.1",
+    "fastclick": "^1.0.6"
+  }
+}

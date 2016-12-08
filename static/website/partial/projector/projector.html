@@ -1,0 +1,36 @@
+<div class="col-md-12" ng-controller="ProjectorCtrl">
+    <div class="module-container">
+        <div class="module-title">
+            Projector Control
+        </div>
+        <div class="module-control module-control-wide" angular-ripple ng-click="playSoundClick(); onSwitchProjectorOff()">
+            <i class="fa fa-power-off red-text"></i>Projector Off
+        </div>
+        <div class="module-row-container">
+            <div class="module-row">
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onScreenUp()">
+                    <i class="fa fa-angle-up blue"></i>
+                    Screen Up
+                </div>
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+            </div>
+            <div class="module-row">
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onScreenStop()">
+                    <i class="fa fa-stop blue"></i>
+                    Stop
+                </div>
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+            </div>
+            <div class="module-row">
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+                <div class="module-row-item" angular-ripple ng-click="playSoundClick(); onScreenDown()">
+                    <i class="fa fa-angle-down blue"></i>
+                    Screen Down
+                </div>
+                <div class="module-row-item module-row-item-no-border no-background"></div>
+            </div>
+        </div>
+    </div>
+</div>
